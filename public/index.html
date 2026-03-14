@@ -1098,9 +1098,9 @@
     <div class=hero-right>
         <div class=hero-shop-card>
             <div class=shop-rating>
-                <span class=stars-display>★★★★</span>
-                <span class=rating-num>4.3</span>
-                <span class=rating-count>47 avis Google</span>
+                <span class=stars-display id=hero-stars>★★★★</span>
+                <span class=rating-num id=hero-rating>4.3</span>
+                <span class=rating-count id=hero-count>47 avis Google</span>
             </div>
             <div class=shop-services-quick>
                 <span class=quick-service>Cordonnerie</span>
@@ -1141,7 +1141,7 @@
                     télécommandes</p>
             </div>
             <div class=service-card>
-                <span class=service-icon>📇 </span>
+                <span class=service-icon>✍️</span>
                 <div class=service-name>Gravure & plaque</div>
                 <p class=service-detail> Plaque pour particulier et professionnel </p>
             </div>
@@ -1152,7 +1152,7 @@
                     courante</p>
             </div>
             <div class=service-card>
-                <span class=service-icon>🔖</span>
+                <span class=service-icon>🔏</span>
                 <div class=service-name>Tampon</div>
                 <p class=service-detail> Fabrication de tampon pour les professionnels et les particuliers </p>
             </div>
@@ -1203,11 +1203,11 @@
                 <span class=stat-label>Ans d'expérience</span>
             </div>
             <div class=stat-box>
-                <span class=stat-big>4.3★</span>
+                <span class=stat-big id=stat-rating>4.3★</span>
                 <span class=stat-label>Note Google</span>
             </div>
             <div class=stat-box>
-                <span class=stat-big>47</span>
+                <span class=stat-big id=stat-count>47</span>
                 <span class=stat-label>Avis clients</span>
             </div>
             <div class=stat-box>
@@ -1229,37 +1229,34 @@
                 <h2>Ce que disent<br>nos <em>clients</em></h2>
             </div>
             <div style=text-align:right>
-                <div style="font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:var(--brown);line-height:1">
+                <div id=avis-rating style="font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:var(--brown);line-height:1">
                     4.3
                 </div>
-                <div style="color:var(--tan);font-size:20px;letter-spacing:3px">★★★★</div>
-                <div style="font-size:12px;color:var(--grey);margin-top:4px">47 avis Google</div>
+                <div id=avis-stars style="color:var(--tan);font-size:20px;letter-spacing:3px">★★★★</div>
+                <div id=avis-count style="font-size:12px;color:var(--grey);margin-top:4px">47 avis Google</div>
             </div>
         </div>
-        <div class=avis-grid>
+        <div class=avis-grid id=avis-grid>
             <div class=avis-card>
                 <span class=avis-quote>"</span>
                 <div class=avis-stars>★★★★★</div>
-                <p class=avis-text>Max est un vrai professionnel. Mes chaussures rendues comme neuves en 2 jours.
-                    Accueil chaleureux et prix très raisonnables. Je reviendrai sans hésiter !</p>
-                <div class=avis-author>Sophie L.</div>
-                <div class=avis-date>Lyon 2e · il y a 2 semaines</div>
+                <p class=avis-text>Chargement des avis Google...</p>
+                <div class=avis-author>&nbsp;</div>
+                <div class=avis-date>&nbsp;</div>
             </div>
             <div class=avis-card>
                 <span class=avis-quote>"</span>
                 <div class=avis-stars>★★★★★</div>
-                <p class=avis-text>Double de clé faite en 5 minutes chrono. Efficace, rapide, souriant. La boutique
-                    idéale dans le quartier — on y trouve vraiment tout ce dont on a besoin.</p>
-                <div class=avis-author>Thomas R.</div>
-                <div class=avis-date>Lyon 2e · il y a 1 mois</div>
+                <p class=avis-text>&nbsp;</p>
+                <div class=avis-author>&nbsp;</div>
+                <div class=avis-date>&nbsp;</div>
             </div>
             <div class=avis-card>
                 <span class=avis-quote>"</span>
-                <div class=avis-stars>★★★★</div>
-                <p class=avis-text>Porte claquée un soir, Max m'a dépanné rapidement. Très compétent en serrurerie,
-                    tarif correct et honnête. Une adresse à garder précieusement dans ses contacts.</p>
-                <div class=avis-author>Marc D.</div>
-                <div class=avis-date>Lyon 2e · il y a 3 mois</div>
+                <div class=avis-stars>★★★★★</div>
+                <p class=avis-text>&nbsp;</p>
+                <div class=avis-author>&nbsp;</div>
+                <div class=avis-date>&nbsp;</div>
             </div>
         </div>
     </div>
@@ -1417,6 +1414,96 @@
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
+
+    /* ── GOOGLE REVIEWS ── */
+    const GOOGLE_PLACE_ID = 'ChIJ2b-36VXq9EcRRLHd52AHs6A';
+
+    function initGoogleReviews() {
+        const service = new google.maps.places.PlacesService(document.createElement('div'));
+        service.getDetails({
+            placeId: GOOGLE_PLACE_ID,
+            fields: ['rating', 'user_ratings_total', 'reviews']
+        }, function (place, status) {
+            if (status !== google.maps.places.PlacesServiceStatus.OK || !place) return;
+
+            updateAllRatings(place.rating, place.user_ratings_total);
+
+            var reviews = (place.reviews || [])
+                .filter(function (r) { return r.rating >= 4; })
+                .sort(function (a, b) { return b.time - a.time; })
+                .slice(0, 3);
+
+            if (reviews.length > 0) renderGoogleReviews(reviews);
+        });
+    }
+
+    function buildStars(rating) {
+        return '\u2605'.repeat(Math.round(rating)) + '\u2606'.repeat(5 - Math.round(rating));
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        var el = document.createElement('span');
+        el.textContent = str;
+        return el.innerHTML;
+    }
+
+    function updateAllRatings(rating, count) {
+        var r = rating.toFixed(1);
+        var stars = buildStars(rating);
+
+        var ids = {
+            'hero-stars': stars,
+            'hero-rating': r,
+            'hero-count': count + ' avis Google',
+            'avis-rating': r,
+            'avis-stars': stars,
+            'avis-count': count + ' avis Google',
+            'stat-rating': r + '\u2605',
+            'stat-count': String(count)
+        };
+
+        Object.keys(ids).forEach(function (id) {
+            var el = document.getElementById(id);
+            if (el) el.textContent = ids[id];
+        });
+
+        var ldScript = document.querySelector('script[type="application/ld+json"]');
+        if (ldScript) {
+            try {
+                var ld = JSON.parse(ldScript.textContent);
+                ld.aggregateRating.ratingValue = r;
+                ld.aggregateRating.reviewCount = String(count);
+                ldScript.textContent = JSON.stringify(ld);
+            } catch (e) { /* ignore */ }
+        }
+    }
+
+    function renderGoogleReviews(reviews) {
+        var grid = document.getElementById('avis-grid');
+        if (!grid) return;
+
+        grid.innerHTML = reviews.map(function (review) {
+            var stars = '\u2605'.repeat(review.rating) + '\u2606'.repeat(5 - review.rating);
+            return '<div class="avis-card">' +
+                '<span class="avis-quote">\u201C</span>' +
+                '<div class="avis-stars">' + stars + '</div>' +
+                '<p class="avis-text">' + escapeHtml(review.text) + '</p>' +
+                '<div class="avis-author">' + escapeHtml(review.author_name) + '</div>' +
+                '<div class="avis-date">' + escapeHtml(review.relative_time_description) + '</div>' +
+                '</div>';
+        }).join('');
+
+        grid.querySelectorAll('.avis-card').forEach(function (el) {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    }
+</script>
+<script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7L8K4GSxo5IfdQHxWA8cGVYYeQyFb7NQ&libraries=places&language=fr&callback=initGoogleReviews">
 </script>
 </body>
 </html>
