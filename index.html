@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang=fr>
+<head>
+    <meta charset=UTF-8>
+    <meta name=viewport content="width=device-width, initial-scale=1.0">
+    <title>Les Services de Max — Cordonnerie & Serrurerie Lyon 2</title>
+    <meta name=description
+          content="Cordonnerie, serrurerie, reproduction de clés et maroquinerie au cœur de Lyon 2. Max vous accueille au 19 Rue Gentil. Ouvert 7j/7.">
+    <meta property=og:title content="Les Services de Max — Lyon 2">
+    <meta property=og:description
+          content="Votre artisan de confiance à Lyon. Cordonnerie, serrurerie, clés, maroquinerie.">
+    <meta property=og:type content=website>
+    <link rel=canonical href="https://les-services-de-max.fr">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
+          rel=stylesheet>
+    <style>
+        :root {
+            --brown: #3D2B1F;
+            --brown-mid: #6B4226;
+            --tan: #C8956C;
+            --tan-light: #E8C4A0;
+            --cream: #FAF3E8;
+            --cream-dark: #F0E4D0;
+            --white: #FFFDF9;
+            --text: #2C1A0E;
+            --grey: #8B7355;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--cream);
+            color: var(--text);
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* ── TEXTURE OVERLAY ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* ── TOP BAR ── */
+        .topbar {
+            background: var(--brown);
+            color: var(--tan-light);
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--white);
+            border-bottom: 1px solid var(--cream-dark);
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(61, 43, 31, 0.08);
+        }
+
+        .nav-logo {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+        }
+
+        .nav-logo-main {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--brown);
+            line-height: 1;
+        }
+
+        .nav-logo-sub {
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--tan);
+            margin-top: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--brown-mid);
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            cursor: pointer;
+            font-weight: 400;
+        }
+
+        .nav-links a:hover {
+            color: var(--tan);
+        }
+
+        .nav-cta {
+            background: var(--brown) !important;
+            color: var(--cream) !important;
+            padding: 10px 22px;
+        }
+
+        .nav-cta:hover {
+            background: var(--brown-mid) !important;
+            color: var(--cream) !important;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 90vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-left {
+            background: var(--brown);
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-left::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(200, 149, 108, 0.15), transparent 70%);
+        }
+
+        .hero-left::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--tan), transparent);
+        }
+
+        .hero-eyebrow {
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--tan);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: fadeRight 0.8s ease both;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--tan);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(40px, 5vw, 68px);
+            font-weight: 700;
+            color: var(--cream);
+            line-height: 1.1;
+            margin-bottom: 8px;
+            animation: fadeRight 0.8s ease 0.1s both;
+        }
+
+        h1 em {
+            font-style: italic;
+            color: var(--tan-light);
+        }
+
+        .hero-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 18px;
+            color: var(--tan-light);
+            margin-bottom: 28px;
+            animation: fadeRight 0.8s ease 0.2s both;
+        }
+
+        .hero-desc {
+            font-size: 15px;
+            color: rgba(250, 243, 232, 0.7);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 400px;
+            animation: fadeRight 0.8s ease 0.3s both;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            animation: fadeRight 0.8s ease 0.4s both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--tan);
+            color: var(--white);
+            padding: 14px 28px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .btn-primary:hover {
+            background: var(--tan-light);
+            color: var(--brown);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(200, 149, 108, 0.4);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(200, 149, 108, 0.5);
+            color: var(--tan-light);
+            padding: 14px 28px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            background: transparent;
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+        }
+
+        .btn-outline:hover {
+            background: rgba(200, 149, 108, 0.1);
+            border-color: var(--tan);
+        }
+
+        /* Hero right */
+        .hero-right {
+            background: var(--cream-dark);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 50px;
+            background-image: repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 20px,
+                    rgba(61, 43, 31, 0.02) 20px,
+                    rgba(61, 43, 31, 0.02) 21px
+            );
+        }
+
+        .hero-shop-card {
+            background: var(--white);
+            padding: 36px;
+            box-shadow: 0 20px 60px rgba(61, 43, 31, 0.12);
+            position: relative;
+            animation: fadeUp 0.8s ease 0.3s both;
+        }
+
+        .hero-shop-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--tan);
+        }
+
+        .shop-rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .stars-display {
+            color: var(--tan);
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .rating-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--brown);
+        }
+
+        .rating-count {
+            font-size: 12px;
+            color: var(--grey);
+        }
+
+        .shop-services-quick {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .quick-service {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--brown-mid);
+            font-weight: 400;
+        }
+
+        .quick-service::before {
+            content: '✓';
+            color: var(--tan);
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .shop-open {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 18px;
+            background: var(--cream);
+            border: 1px solid var(--cream-dark);
+            margin-bottom: 16px;
+        }
+
+        .open-dot {
+            width: 8px;
+            height: 8px;
+            background: #4CAF50;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(1.4);
+            }
+        }
+
+        .open-text {
+            font-size: 13px;
+            color: var(--text);
+        }
+
+        .open-text strong {
+            color: #4CAF50;
+        }
+
+        .shop-call {
+            background: var(--brown);
+            color: var(--cream);
+            padding: 16px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .shop-call:hover {
+            background: var(--brown-mid);
+        }
+
+        .call-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            display: block;
+            letter-spacing: 1px;
+        }
+
+        .call-sub {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--tan-light);
+            margin-top: 4px;
+            display: block;
+        }
+
+        @keyframes fadeRight {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── SERVICES STRIP ── */
+        .services-strip {
+            background: var(--brown);
+            padding: 60px 40px;
+        }
+
+        .services-strip-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .strip-label {
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--tan);
+            text-align: center;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .strip-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 3vw, 42px);
+            color: var(--cream);
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+
+        .strip-title em {
+            font-style: italic;
+            color: var(--tan-light);
+        }
+
+        .services-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 36px 28px;
+            text-align: center;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--tan);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .service-card:hover {
+            background: rgba(200, 149, 108, 0.1);
+        }
+
+        .service-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            display: block;
+            margin-bottom: 18px;
+        }
+
+        .service-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: var(--cream);
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .service-detail {
+            font-size: 13px;
+            color: rgba(250, 243, 232, 0.55);
+            line-height: 1.6;
+        }
+
+        /* ── WHY MAX ── */
+        .why-section {
+            padding: 100px 40px;
+            background: var(--white);
+        }
+
+        .why-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .section-eyebrow {
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--tan);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 3.5vw, 48px);
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--brown);
+            margin-bottom: 20px;
+        }
+
+        h2 em {
+            font-style: italic;
+            color: var(--tan);
+        }
+
+        .section-text {
+            font-size: 15px;
+            color: var(--grey);
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .why-points {
+            list-style: none;
+        }
+
+        .why-point {
+            display: flex;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        .why-point:last-child {
+            border-bottom: none;
+        }
+
+        .why-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--tan);
+            font-weight: 700;
+            line-height: 1;
+            flex-shrink: 0;
+            width: 40px;
+        }
+
+        .why-text-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--brown);
+            margin-bottom: 4px;
+        }
+
+        .why-text-desc {
+            font-size: 13px;
+            color: var(--grey);
+            line-height: 1.6;
+        }
+
+        /* Right side stats */
+        .why-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .stat-box {
+            background: var(--cream);
+            padding: 32px 24px;
+            text-align: center;
+            border: 1px solid var(--cream-dark);
+            transition: all 0.3s;
+        }
+
+        .stat-box:hover {
+            border-color: var(--tan);
+            transform: translateY(-4px);
+        }
+
+        .stat-big {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--brown);
+            line-height: 1;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--tan);
+            margin-top: 8px;
+            display: block;
+        }
+
+        .stat-box-wide {
+            grid-column: 1 / -1;
+            background: var(--brown);
+            padding: 28px;
+            text-align: center;
+        }
+
+        .stat-box-wide .stat-big {
+            color: var(--tan-light);
+            font-size: 36px;
+        }
+
+        .stat-box-wide .stat-label {
+            color: rgba(250, 243, 232, 0.7);
+        }
+
+        /* ── AVIS ── */
+        .avis-section {
+            padding: 100px 40px;
+            background: var(--cream);
+        }
+
+        .avis-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .avis-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 50px;
+        }
+
+        .avis-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .avis-card {
+            background: var(--white);
+            padding: 32px;
+            border: 1px solid var(--cream-dark);
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .avis-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(61, 43, 31, 0.1);
+        }
+
+        .avis-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 60px;
+            color: var(--tan-light);
+            line-height: 0.5;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .avis-stars {
+            color: var(--tan);
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+        }
+
+        .avis-text {
+            font-size: 14px;
+            color: var(--grey);
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .avis-author {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--brown-mid);
+        }
+
+        .avis-date {
+            font-size: 11px;
+            color: var(--grey);
+            margin-top: 2px;
+        }
+
+        /* ── MAP ── */
+        .map-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .map-info {
+            background: var(--brown);
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .map-info h2 {
+            color: var(--cream);
+            margin-bottom: 24px;
+        }
+
+        .map-info h2 em {
+            color: var(--tan-light);
+        }
+
+        .map-info .section-text {
+            color: rgba(250, 243, 232, 0.65);
+        }
+
+        .contact-row {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(200, 149, 108, 0.2);
+        }
+
+        .contact-row:last-of-type {
+            border-bottom: none;
+            margin-bottom: 32px;
+        }
+
+        .contact-emoji {
+            font-size: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .contact-lbl {
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--tan);
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .contact-val {
+            font-size: 15px;
+            color: var(--cream);
+        }
+
+        .map-embed iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+            min-height: 500px;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--brown);
+            border-top: 3px solid var(--tan);
+            padding: 60px 40px 30px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            color: var(--cream);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .footer-tagline {
+            font-size: 13px;
+            color: rgba(250, 243, 232, 0.5);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .footer-col-title {
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--tan);
+            margin-bottom: 18px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: rgba(250, 243, 232, 0.6);
+            text-decoration: none;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: var(--tan-light);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(200, 149, 108, 0.2);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: rgba(250, 243, 232, 0.4);
+            letter-spacing: 1px;
+        }
+
+        /* ── MODAL ── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(61, 43, 31, 0.7);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--white);
+            max-width: 520px;
+            width: 100%;
+            padding: 48px;
+            position: relative;
+            border-top: 4px solid var(--tan);
+            animation: fadeUp 0.3s ease;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--grey);
+        }
+
+        .modal h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            color: var(--brown);
+            margin-bottom: 10px;
+        }
+
+        .modal p {
+            color: var(--grey);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .modal-body {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        /* ── TOAST ── */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--brown);
+            color: var(--tan-light);
+            padding: 14px 28px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            z-index: 9999;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            white-space: nowrap;
+            border-left: 3px solid var(--tan);
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            nav {
+                padding: 16px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-left {
+                padding: 80px 24px 50px;
+            }
+
+            .hero-right {
+                padding: 30px 24px;
+            }
+
+            .services-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .why-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .avis-header {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .avis-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .map-section {
+                grid-template-columns: 1fr;
+            }
+
+            .map-info {
+                padding: 60px 24px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Les Services de Max",
+            "telephone": "+33637725719",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "19 Rue Gentil",
+                "addressLocality": "Lyon",
+                "postalCode": "69002",
+                "addressCountry": "FR"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 45.7650579,
+                "longitude": 4.8363972
+            },
+            "openingHours": "Mo-Sa 09:00-19:00",
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.3",
+                "reviewCount": "47"
+            },
+            "description": "Cordonnerie, serrurerie, reproduction de clés et maroquinerie au cœur de Lyon 2."
+        }
+    </script>
+    <link rel=preconnect href="https://fonts.googleapis.com">
+</head>
+<body>
+<div class=topbar>📍 19 Rue Gentil, Lyon 2e &nbsp;·&nbsp; Mar–Sam 10h–19h &nbsp;·&nbsp; ☎ 06 37 72 57 19</div>
+<nav>
+    <a class=nav-logo href="#">
+        <span class=nav-logo-main>Les Services de Max</span>
+        <span class=nav-logo-sub>Artisan depuis 1980 · Lyon 2e</span>
+    </a>
+    <ul class=nav-links>
+        <li><a onclick="scrollTo('services')">Services</a></li>
+        <li><a onclick="scrollTo('pourquoi')">Notre Boutique</a></li>
+        <li><a onclick="scrollTo('avis')">Avis Clients</a></li>
+        <li><a onclick="scrollTo('map')">Nous Trouver</a></li>
+        <li><a onclick="openModal('contact')" class=nav-cta>Appeler Max</a></li>
+    </ul>
+</nav>
+<div class=hero>
+    <div class=hero-left>
+        <div class=hero-eyebrow>Artisan de confiance — Lyon 2e</div>
+        <h1>Les Services<br>de <em>Max</em></h1>
+        <p class=hero-tagline>Votre boutique multiservice au cœur de Lyon</p>
+        <p class=hero-desc>Cordonnerie, serrurerie, reproduction de clés, maroquinerie et bien plus. Max vous accueille
+            avec le sourire au 19 Rue Gentil depuis plus de 40 ans.</p>
+        <div class=hero-actions>
+            <a href="tel:+33637725719" class=btn-primary onclick="showToast('📞 Appel en cours vers Max...')">
+                📞 Appeler Max
+            </a>
+            <button class=btn-outline onclick="scrollTo('services')">
+                Nos services →
+            </button>
+        </div>
+    </div>
+    <div class=hero-right>
+        <div class=hero-shop-card>
+            <div class=shop-rating>
+                <span class=stars-display>★★★★</span>
+                <span class=rating-num>4.3</span>
+                <span class=rating-count>47 avis Google</span>
+            </div>
+            <div class=shop-services-quick>
+                <span class=quick-service>Cordonnerie</span>
+                <span class=quick-service>Serrurerie</span>
+                <span class=quick-service>Reproduction de clés</span>
+                <span class=quick-service>Maroquinerie</span>
+                <span class=quick-service>Urgence 24h</span>
+                <span class=quick-service>Gravure</span>
+            </div>
+            <div class=shop-open>
+                <div class=open-dot></div>
+                <div class=open-text><strong>Ouvert maintenant</strong> — Ferme à 19h</div>
+            </div>
+            <div class=shop-call
+                 onclick="window.location.href='tel:+33637725719'; showToast('📞 Appel en cours vers Max...')">
+                <span class=call-num>06 37 72 57 19</span>
+                <span class=call-sub>Cliquez pour appeler directement</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class=services-strip id=services>
+    <div class=services-strip-inner>
+        <span class=strip-label>Ce que nous faisons</span>
+        <h2 class=strip-title>Tous vos services en <em>une seule boutique</em></h2>
+        <div class=services-cards>
+            <div class=service-card>
+                <span class=service-icon>👟</span>
+                <div class=service-name>Cordonnerie</div>
+                <p class=service-detail>Réparation de chaussures, ressemelage, talons, coutures — travail soigné, rendu
+                    rapide</p>
+            </div>
+            <div class=service-card>
+                <span class=service-icon>🔑</span>
+                <div class=service-name>Reproduction de Clés</div>
+                <p class=service-detail>Doubles de clés toutes marques, clés de voiture, badges d'immeuble,
+                    télécommandes</p>
+            </div>
+            <div class=service-card>
+                <span class=service-icon>📇 </span>
+                <div class=service-name>Gravue & plaque</div>
+                <p class=service-detail>Porte claquée, serrure bloquée, changement de cylindre — intervention rapide à
+                    Lyon</p>
+            </div>
+            <div class=service-card>
+                <span class=service-icon>👜</span>
+                <div class=service-name>Maroquinerie</div>
+                <p class=service-detail>Réparation de sacs, ceintures, bagages, portefeuilles — maroquinerie fine et
+                    courante</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class=why-section id=pourquoi>
+    <div class=why-inner>
+        <div>
+            <span class=section-eyebrow>Notre histoire</span>
+            <h2>Un artisan <em>passionné</em><br>au service de Lyon</h2>
+            <p class=section-text>Depuis plus de 40 ans, Max accueille les Lyonnais dans sa boutique du 2e
+                arrondissement. Une adresse de confiance où le travail bien fait et la relation humaine passent avant
+                tout.</p>
+            <ul class=why-points>
+                <li class=why-point>
+                    <span class=why-num>01</span>
+                    <div>
+                        <div class=why-text-title>Expertise reconnue</div>
+                        <div class=why-text-desc>Plus de 40 ans de métier, des centaines de clients fidèles dans le
+                            quartier
+                        </div>
+                    </div>
+                </li>
+                <li class=why-point>
+                    <span class=why-num>02</span>
+                    <div>
+                        <div class=why-text-title>Tout en un seul endroit</div>
+                        <div class=why-text-desc>Chaussures, clés, serrures, sacs — inutile de courir plusieurs
+                            boutiques
+                        </div>
+                    </div>
+                </li>
+                <li class=why-point>
+                    <span class=why-num>03</span>
+                    <div>
+                        <div class=why-text-title>Tarifs honnêtes</div>
+                        <div class=why-text-desc>Devis transparent, pas de mauvaises surprises — le prix annoncé est le
+                            prix payé
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class=why-stats>
+            <div class=stat-box>
+                <span class=stat-big>40+</span>
+                <span class=stat-label>Ans d'expérience</span>
+            </div>
+            <div class=stat-box>
+                <span class=stat-big>4.3★</span>
+                <span class=stat-label>Note Google</span>
+            </div>
+            <div class=stat-box>
+                <span class=stat-big>47</span>
+                <span class=stat-label>Avis clients</span>
+            </div>
+            <div class=stat-box>
+                <span class=stat-big>Lyon<br>2e</span>
+                <span class=stat-label>Centre-ville</span>
+            </div>
+            <div class=stat-box-wide>
+                <span class=stat-big>Mar–Sam · 10h–19h</span>
+                <span class=stat-label>Horaires d'ouverture</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class=avis-section id=avis>
+    <div class=avis-inner>
+        <div class=avis-header>
+            <div>
+                <span class=section-eyebrow>Témoignages</span>
+                <h2>Ce que disent<br>nos <em>clients</em></h2>
+            </div>
+            <div style=text-align:right>
+                <div style="font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:var(--brown);line-height:1">
+                    4.3
+                </div>
+                <div style="color:var(--tan);font-size:20px;letter-spacing:3px">★★★★</div>
+                <div style="font-size:12px;color:var(--grey);margin-top:4px">47 avis Google</div>
+            </div>
+        </div>
+        <div class=avis-grid>
+            <div class=avis-card>
+                <span class=avis-quote>"</span>
+                <div class=avis-stars>★★★★★</div>
+                <p class=avis-text>Max est un vrai professionnel. Mes chaussures rendues comme neuves en 2 jours.
+                    Accueil chaleureux et prix très raisonnables. Je reviendrai sans hésiter !</p>
+                <div class=avis-author>Sophie L.</div>
+                <div class=avis-date>Lyon 2e · il y a 2 semaines</div>
+            </div>
+            <div class=avis-card>
+                <span class=avis-quote>"</span>
+                <div class=avis-stars>★★★★★</div>
+                <p class=avis-text>Double de clé faite en 5 minutes chrono. Efficace, rapide, souriant. La boutique
+                    idéale dans le quartier — on y trouve vraiment tout ce dont on a besoin.</p>
+                <div class=avis-author>Thomas R.</div>
+                <div class=avis-date>Lyon 2e · il y a 1 mois</div>
+            </div>
+            <div class=avis-card>
+                <span class=avis-quote>"</span>
+                <div class=avis-stars>★★★★</div>
+                <p class=avis-text>Porte claquée un soir, Max m'a dépanné rapidement. Très compétent en serrurerie,
+                    tarif correct et honnête. Une adresse à garder précieusement dans ses contacts.</p>
+                <div class=avis-author>Marc D.</div>
+                <div class=avis-date>Lyon 2e · il y a 3 mois</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class=map-section id=map>
+    <div class=map-info>
+        <span class=section-eyebrow>Où nous trouver</span>
+        <h2>Au cœur de<br><em>Lyon 2e</em></h2>
+        <p class=section-text>Facile d'accès, proche des transports en commun. Venez nous rendre visite ou appelez-nous
+            directement.</p>
+        <div class=contact-row>
+            <span class=contact-emoji>📍</span>
+            <div>
+                <span class=contact-lbl>Adresse</span>
+                <span class=contact-val>19 Rue Gentil, 69002 Lyon</span>
+            </div>
+        </div>
+        <div class=contact-row>
+            <span class=contact-emoji>📞</span>
+            <div>
+                <span class=contact-lbl>Téléphone</span>
+                <span class=contact-val>06 37 72 57 19</span>
+            </div>
+        </div>
+        <div class=contact-row>
+            <span class=contact-emoji>🕐</span>
+            <div>
+                <span class=contact-lbl>Horaires</span>
+                <span class=contact-val>Mardi–Samedi · 10h00–19h00</span>
+            </div>
+        </div>
+        <a href="tel:+33637725719" class=btn-primary onclick="showToast('📞 Appel en cours vers Max...')"
+           style="display:inline-flex;margin-top:8px">
+            📞 Appeler Max maintenant
+        </a>
+    </div>
+    <div class=map-embed>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2783.4!2d4.8343!3d45.7650!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4ea55e9b7bfd9%3A0xa0b30760e7ddb144!2s19+Rue+Gentil%2C+69002+Lyon!5e0!3m2!1sfr!2sfr!4v1700000000000"
+                allowfullscreen loading=lazy referrerpolicy=no-referrer-when-downgrade>
+        </iframe>
+    </div>
+</div>
+<footer>
+    <div class=footer-inner>
+        <div class=footer-top>
+            <div>
+                <span class=footer-brand>Les Services de Max</span>
+                <p class=footer-tagline>Votre artisan de confiance au cœur de Lyon 2e depuis plus de 15 ans.
+                    Cordonnerie, serrurerie, reproduction de clés, maroquinerie.</p>
+            </div>
+            <div>
+                <div class=footer-col-title>Services</div>
+                <ul class=footer-links>
+                    <li><a onclick="scrollTo('services')">Cordonnerie</a></li>
+                    <li><a onclick="scrollTo('services')">Reproduction de clés</a></li>
+                    <li><a onclick="scrollTo('services')">Gravure et plaque</a></li>
+                    <li><a onclick="scrollTo('services')">Maroquinerie</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class=footer-col-title>Informations</div>
+                <ul class=footer-links>
+                    <li><a onclick="openModal('mentions')">Mentions légales</a></li>
+                    <li><a onclick="openModal('confidentialite')">Confidentialité</a></li>
+                    <li><a onclick="openModal('cgv')">CGV</a></li>
+                    <li><a onclick="scrollTo('map')">Nous trouver</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class=footer-bottom>
+            <span>© 2024 Les Services de Max — Tous droits réservés</span>
+            <span>19 Rue Gentil, 69002 Lyon · 06 37 72 57 19</span>
+        </div>
+    </div>
+</footer>
+<div class=modal-overlay id=modal-overlay onclick="closeModal(event)">
+    <div class=modal>
+        <button class=modal-close onclick="closeAllModals()">✕</button>
+        <h3 id=modal-title></h3>
+        <p id=modal-subtitle></p>
+        <div class=modal-body id=modal-body></div>
+    </div>
+</div>
+<div class=toast id=toast></div>
+<script>
+    function scrollTo(id) {
+        document.getElementById(id)?.scrollIntoView({behavior: 'smooth'});
+    }
+
+    function showToast(msg) {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    const modals = {
+        contact: {
+            title: 'Contacter Max',
+            subtitle: 'Disponible du lundi au samedi',
+            body: `<strong style="color:var(--tan)">📞 06 37 72 57 19</strong><br><br>
+      <strong>Adresse :</strong><br>19 Rue Gentil, 69002 Lyon<br><br>
+      <strong>Horaires :</strong><br>Lundi–Samedi, 9h00–19h00`
+        },
+        mentions: {
+            title: 'Mentions Légales',
+            subtitle: '',
+            body: `<strong>Éditeur :</strong><br>Les Services de Max<br>19 Rue Gentil, 69002 Lyon<br>Tél : 06 37 72 57 19<br><br>
+      <strong>Responsable :</strong> Max (Gérant)`
+        },
+        confidentialite: {
+            title: 'Politique de Confidentialité',
+            subtitle: 'Conformément au RGPD',
+            body: `Les données collectées sont utilisées uniquement pour répondre à vos demandes. Elles ne sont jamais transmises à des tiers. Vous disposez d'un droit d'accès et de suppression en nous contactant directement.`
+        },
+        cgv: {
+            title: 'Conditions Générales',
+            subtitle: '',
+            body: `Tout devis est gratuit. Les tarifs sont communiqués avant toute intervention. Le règlement s'effectue à la remise des travaux. Travaux garantis. En cas de litige, une solution amiable sera recherchée.`
+        }
+    };
+
+    function openModal(key) {
+        const m = modals[key];
+        if (!m) return;
+        document.getElementById('modal-title').textContent = m.title;
+        document.getElementById('modal-subtitle').textContent = m.subtitle;
+        document.getElementById('modal-body').innerHTML = m.body;
+        document.getElementById('modal-overlay').classList.add('active');
+        return false;
+    }
+
+    function closeAllModals() {
+        document.getElementById('modal-overlay').classList.remove('active');
+    }
+
+    function closeModal(e) {
+        if (e.target === document.getElementById('modal-overlay')) closeAllModals();
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.style.opacity = '1';
+                e.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {threshold: 0.1});
+
+    document.querySelectorAll('.service-card, .avis-card, .stat-box').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+</script>
+</body>
+</html>
